@@ -101,6 +101,7 @@ namespace WebDemo2.Controllers
             }
             //Toi la Tan
             //Tao la Tri
+            /// ABCD
             db.SaveChanges();
         }
 
