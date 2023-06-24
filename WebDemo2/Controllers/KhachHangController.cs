@@ -104,6 +104,7 @@ namespace WebDemo2.Controllers
             /// ABCD
             // Day la tool
             // alo 
+            // alo 2
             db.SaveChanges();
         }
 
