@@ -1,0 +1,48 @@
+﻿@model IEnumerable<WebDemo2.Models.BangMayTinh>
+
+@{
+    ViewBag.Title = "DanhSach";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <hr />
+        <a href="~/DonHang/Create" class="btn btn-outline-success" style="float:right">Thêm mới</a>
+        <table class="table">
+            <tr>
+                <th>
+                    Tên Máy Tính
+                </th>
+                <th>
+                    Hãng Sản Xuất
+                </th>
+                <th>
+                    Năm Sản Xuất
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TenMayTinh)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HangSangXuat)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NamSX)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>

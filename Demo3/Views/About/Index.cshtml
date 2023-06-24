@@ -1,0 +1,61 @@
+﻿
+
+@{
+    Layout = null;
+}
+@{
+    ViewBag.Title = "About";
+    ViewBag.button = "Chi tiet";
+    Layout = "~/Views/Shared/Layout.cshtml";
+    ViewBag.active = 2;
+
+}<!-- about -->
+<div class="about">
+    <div class="container_width">
+        <div class="row d_flex grig">
+            <div class="col-md-6">
+                <div class="about_img">
+                    <figure>
+                        <img src="~/frontend/images/about_img.jpg" alt="#" />
+                    </figure>
+                </div>
+            </div>
+            <div class="col-md-6 order">
+                <div class="titlepage text_align_left">
+                    <h2>About Our Center</h2>
+                    <p>sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquipsed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip</p>
+                    <a class="read_more" href="about.html">Read More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+}<!-- end about -->
+
+@section about{
+    <div class="hedingh3 text_align_left">
+        <h3>About</h3>
+        <p>
+            @*Sẽ thay đỏi khi view khác nhau*@
+            Virginia, looked up one of the more obscure Latin words, consectetur,
+            from a Lorem Ipsum passage, and going through the cites of the word in classical literature,
+            discovered the undoubtable sourc
+            @*Sẽ thay đỏi khi view khác nhau*@
+
+        </p>
+    </div>
+}
+@section meta{
+    <!-- basic -->
+
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- mobile metas -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+
+}

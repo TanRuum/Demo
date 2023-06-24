@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Sapxep";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+@model List<Demo3.Models.MayTinh>
+
+
+<div>
+    <h2>Danh sach Apple</h2>
+    <p>
+        <a href="~/ContactUs/Sapxep">Giá thấp nhất</a> <br />
+        <a href="~/ContactUs/SapxepTuBeDenLon">Giá tăng dần</a> <br />
+        <a href="~/ContactUs/SapxepLonDenBe">Giá giảm dần</a>
+        <a href="~/ContactUs/TimhangApple">Hãng Apple</a>
+
+
+    </p>
+    <table class="table table-bordered">
+        <thead>
+            <tr style="font-size:25p;">
+                <th>Mã máy</th>
+                <th>Tên dòng máy</th>
+                <th>Giá bán</th>
+                <th>Ngày sản xuất</th>
+                <th>Hãng sán xuất</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Mamay</td>
+                    <td>@item.Tendongmay</td>
+                    <td>@item.Price</td>
+                    <td>@string.Format("{0:dd-MM-yyyy}", item.NSX)</td>
+                    <td>@item.HangSX</td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>

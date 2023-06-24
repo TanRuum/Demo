@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "Text";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<div class="container">
+    <p>
+        <a href="~/Service/Text" style="">Giá</a> <br />
+        <a href="~/Service/FormThemMoi" style="float:right">Thêm mới</a>
+
+    </p>
+    <table class="table table-bordered">
+        <thead>
+            <tr style="font-size:25p;">
+                <th>Mã máy</th>
+                <th>Tên dòng máy</th>
+                <th>Giá bán</th>
+                <th>Ngày sản xuất</th>
+                <th>Hãng sán xuất</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Mamay</td>
+                    <td>@item.Tendongmay</td>
+                    <td>@item.Price</td>
+                    <td>@string.Format("{0:dd-MM-yyyy}", item.NSX)</td>
+                    <td>@item.HangSX</td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>

@@ -1,0 +1,230 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+
+    @RenderSection("meta", false)
+
+    <!-- site metas -->
+
+    <title>@ViewBag.title</title>
+
+    <meta name="keywords" content="">
+
+    <meta name="description" content="">
+
+    <meta name="author" content="">
+
+    <!-- bootstrap css -->
+
+    <link rel="stylesheet" href="~/frontend/css/bootstrap.min.css">
+
+    <!-- style css -->
+
+    <link rel="stylesheet" href="~/frontend/css/style.css">
+
+    <!-- Responsive-->
+
+    <link rel="stylesheet" href="~/frontend/css/responsive.css">
+
+    <!-- fevicon -->
+
+    <link rel="icon" href="~/frontend/images/fevicon.png" type="image/gif" />
+
+    <!-- Tweaks for older IEs-->
+
+    <link rel="stylesheet" href="~/frontend/css/owl.carousel.min.css">
+
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+
+    <link rel="stylesheet" href="~/frontend/css/bootstrap-datepicker.min.css">
+
+    <!--[if lt IE 9]>
+
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+</head>
+<body class="main-layout">
+    <!-- loader  -->
+    <div class="loader_bg">
+        <div class="loader"><img src="~/frontend/images/loading.gif" alt="#" /></div>
+    </div>
+    <!-- end loader -->
+    <div class="full_bg">
+        <!-- header -->
+        <header class="header-area">
+            <div class="container">
+                <div class="row d_flex">
+                    <div class=" col-md-3 col-sm-3">
+                        <div class="logo">
+                            <a href="~/">Bliss</a>
+                        </div>
+                    </div>
+                    <div class="col-md-9 col-sm-9">
+                        <div class="navbar-area">
+                            <nav class="site-navbar">
+                                <ul>
+                                    @*@if (ViewBag.active == 1)
+                                        {
+                                            <li><a class="active" href="~/">Home</a></li>
+                                        }
+                                        else
+                                        {
+                                            <li><a class="" href="~/">Home</a></li>
+                                        }
+
+                                        @if (ViewBag.active == 2)
+                                        {
+                                            <li><a class="active" href="~/About/Index">About</a></li>
+                                        }
+                                        else
+                                        {
+                                            <li><a class="" href="~/About/Index">About</a></li>
+                                        }
+                                        @if (ViewBag.active == 3)
+                                        {
+                                            <li><a class="active" href="~/Service/Index">Service</a></li>
+
+                                        }
+                                        else
+                                        {
+                                            <li><a href="~/Service/Index">Service</a></li>
+
+                                        }
+                                        @if (ViewBag.active == 4)
+                                        {
+                                            <li><a class="active" href="~/Blog/Index">Blog</a></li>
+
+                                        }
+                                        else
+                                        {
+                                            <li><a href="~/Blog/Index">Blog</a></li>
+
+                                        }
+                                        @if (ViewBag.active == 5)
+                                        {
+                                            <li><a class="active" href="~/ContactUS/Index">Contact</a></li>
+
+                                        }
+                                        else
+                                        {
+                                            <li><a href="~/ContactUS/Index">Contact</a></li>
+
+                                        }*@
+                                    <li><a class=" @Html.Raw(ViewBag.active == 1 ? "active" : "") " href="~/">Home</a></li>
+                                    <li><a class=" @Html.Raw(ViewBag.active == 2 ? "active" : "") " href="~/KhachHang/DanhSach">Khách Hàng</a></li>
+                                    <li><a class=" @Html.Raw(ViewBag.active == 3 ? "active" : "") " href="~/DonHang/DanhSach">Đơn Hàng</a></li>
+
+                                    <li class="d_none"><a href="Javascript:void(0)"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+                                    <li class="d_none"><a href="Javascript:void(0)"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+                                    <li><a href="#" class="btn btn-danger" rounded-pill>@ViewBag.button</a></li>
+                                </ul>
+                                <button class="nav-toggler btn btn-outline-danger rounded-pill">
+                                    <span></span>
+                                </button>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        @RenderBody()
+    </div>
+
+
+    <footer>
+        <div class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12">
+                                @RenderSection("about", false)
+                                @RenderSection("home", false)
+                                @RenderSection("blog", false)
+                                @RenderSection("contact", false)
+                                @RenderSection("service", false)
+
+
+
+                            </div>
+                            <div class="col-lg-6 col-md-12">
+                                <div class="hedingh3 text_align_left">
+                                    <h3>Blog</h3>
+                                    <p>Which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anythin</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12">
+                                <div class="hedingh3 text_align_left">
+                                    <h3>Menu</h3>
+                                    <ul class="menu_footer">
+                                        <li><a href="~/Home/Index">Home</a></li>
+                                        <li><a href="~/About/Index">About</a></li>
+                                        <li><a href="~/Service/Index">Service</a></li>
+                                        <li><a href="~/Blog/Index">Blog</a></li>
+                                        <li><a href="~/ContactUs/Index">Contact us</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12">
+                                <div class="hedingh3  text_align_left">
+                                    <h3>Newsletter</h3>
+                                    <form id="colof" class="form_subscri">
+                                        <input class="newsl" placeholder="Email" type="text" name="Email">
+                                        <button class="subsci_btn">Subscribe</button>
+                                    </form>
+                                    <ul class="top_infomation">
+                                        <li>
+                                            <i class="fa fa-phone" aria-hidden="true"></i>
+                                            +01 1234567890
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                                            <a href="Javascript:void(0)">demo@gmail.com</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="follow text_align_center">
+                                <h3>Follow Us</h3>
+                                <ul class="social_icon ">
+                                    <li><a href="Javascript:void(0)"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                    <li><a href="Javascript:void(0)"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                    <li><a href="Javascript:void(0)"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                    <li><a href="Javascript:void(0)"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <p>
+                                <a href="https://html.design/"> Free html Templates</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</html>
+<script src="~/frontend/js/jquery.min.js"></script>
+<script src="~/frontend/js/bootstrap.bundle.min.js"></script>
+<script src="~/frontend/js/jquery-3.0.0.min.js"></script>
+<script src="~/frontend/js/owl.carousel.min.js"></script>
+<script src="~/frontend/js/bootstrap-datepicker.min.js"></script>
+<script src="~/frontend/js/custom.js"></script>
+@RenderSection("Script", false)
+@RenderSection("ScriptDonhang", false)
+

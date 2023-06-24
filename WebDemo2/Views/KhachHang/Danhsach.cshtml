@@ -1,0 +1,74 @@
+﻿@model IEnumerable<WebDemo2.Models.KhachHang>
+
+@{
+    ViewBag.Title = "Danh Sách Khách Hàng";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<div class="container">
+    <div class="row">
+        <h2>Danh sách khách hàng</h2>
+        <hr />
+        <a href="~/KhachHang/Themmoi" class="btn btn-success" style="float:right">Thêm mới</a>
+
+        <div class="col-md-12">
+            <table class="table table-bordered">
+                <tr>
+                    <th>
+                        Tên Khách Hàng
+                    </th>
+                    <th>
+                        Số Điện Thoại
+                    </th>
+                    <th>
+                        Địa Chỉ
+                    </th>
+                    <th>Loại Khách Hàng</th>
+                    <th>
+                        #
+                    </th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TenKhachHang)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SoDienThoai)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DiaChi)
+                        </td>
+                        <td>
+                            @*Sử dụng lệnh file*@
+                            
+                                @*//Cách 1*@
+                                @*WebDemo2.Models.BanHangEntities db = new WebDemo2.Models.BanHangEntities();
+                                    var LoaiKH = db.PhanLoaiKHs.Find(item.IdLoaiKhachHang);
+                                    if (LoaiKH != null)
+                                    {
+                                        <span>@LoaiKH.TenPhanLoai</span>
+                                    }*@
+                                @*//Cách 2*@
+                                @{
+                                    if (item.PhanLoaiKH != null)
+                                    {
+                                        <span>@item.PhanLoaiKH.TenPhanLoai</span>
+
+                                    }
+                                }
+
+                            
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { IDkhachhang = item.ID }) |
+                            @Html.ActionLink("Details", "Details", new { IDkhachhang = item.ID }) |
+                            @Html.ActionLink("Delete", "Delete", new { IDkhachhang = item.ID })
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>

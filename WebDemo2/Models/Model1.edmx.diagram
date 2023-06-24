@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="739dc4db28324d8db911dcb54143b184" Name="Diagram1" ShowGrid="true" SnapToGrid="false" DisplayType="true">
+        <EntityTypeShape EntityType="BanHangModel.BangMayTinh" Width="3.0916667496785522" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BanHangModel.KhachHang" Width="1.5" PointX="5.8750001629814506" PointY="0.69999999739229679" IsExpanded="true" />
+        <EntityTypeShape EntityType="BanHangModel.PhanLoaiKH" Width="1.5" PointX="5.9250001199543476" PointY="4.1217854861170036" />
+        <AssociationConnector Association="BanHangModel.FK_KhachHang_PhanLoaiKH" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "FormThemMoi";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+
+<Main>
+    <div>
+        <h2>Them Moi</h2>
+    </div>
+    <div class="container mt-3">
+        <h2>Stacked form</h2>
+        <form action="~/Service/LuuThemMoi" method="post">
+            <div class="mb-3 mt-3">
+                <label for="email">Mã Máy:</label>
+                <input type="text" class="form-control" id="Mamay" placeholder="Mã máy" name="Mamay">
+            </div>
+            <div class="mb-3">
+                <label for="pwd">Tên Máy:</label>
+                <input type="text" class="form-control" id="pwd" placeholder="Tên Máy" name="Tendongmay">
+            </div>
+            <div class="mb-3">
+                <label for="pwd">Giá:</label>
+                <input type="number" class="form-control" id="Price" placeholder="Giá" name="Price">
+            </div>
+            <div class="mb-3">
+                <label for="pwd">Ngày Sản Xuất:</label>
+                <input type="date" class="form-control" id="NSX" placeholder="Ngày Sản Xuất" name="NSX">
+            </div>
+            <div class="mb-3">
+                <label for="pwd">Hãng Sản Xuất:</label>
+                <input type="text" class="form-control" id="Dongmay" placeholder="Dòng Máy" name="HangSX">
+            </div>
+          
+            <button type="submit" class="btn btn-primary">Lưu+</button>
+        </form>
+    </div>
+
+</Main>

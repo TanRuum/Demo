@@ -1,0 +1,80 @@
+﻿@model IEnumerable<WebDemo1.Models.DonHang>
+
+@{
+    ViewBag.Title = "ListOrder";
+    Layout = "~/Views/Shared/Layout.cshtml";
+
+
+}
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>ListOrder</h2>
+            <a href="~/DonHang/AddNew" class="btn btn-success">Thêm đơn hàng</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-condensed">
+                <tr>
+                    <th>
+                        ID
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Phone Number
+                    </th>
+                    <th>
+                        Address
+                    </th>
+                    <th>
+                        Order Date
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td>
+                            <a href="~/DonHang/Detail?IdDonHang=@item.Id">@item.Name</a>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PhoneNumber)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Address)
+                        </td>
+                        <td>
+
+                            @string.Format("{0:dd-MM-yyyy HH:mm }", item.OrderDate)
+                            @*@Html.DisplayFor(modelItem => item.OrderDate)*@
+                        </td>
+                        <td>
+                            <a href="~/Donhang/Eddit?IdDonhang=@item.Id">Edit</a> |
+                            <a href="#" onclick="XoaDonHang(@item.Id)">Delete</a> |
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+
+</div>
+@section ScriptDonhang{
+<script>
+    var XoaDonHang = function (IdDonhang) {
+        if (confirm("Bạn có muốn xóa không") == true) {
+            location.href = "/DonHang/Delete?IdDonhang=" + IdDonhang;
+        }
+    }
+</script>
+}

@@ -1,0 +1,89 @@
+﻿@model WebDemo1.Models.DonHang
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<div class=" container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Chi Tiết</h2>
+            <hr />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Chi tiết khách hàng</h4>
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.PhoneNumber)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.PhoneNumber)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Address)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Address)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.OrderDate)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.OrderDate)
+                </dd>
+
+            </dl>
+
+        </div>
+        <div class="col-md-6">
+            <h4>Chi Tiết Đơn Hàng</h4>
+            <a href="~/DonHang/ThemChiTiet?IdDonHang=@Model.Id" style="float:right">Thêm chi tiết đơn hàng</a>
+            <table class="table table-bordered">
+                <tr>
+                    <th>Mã Máy</th>
+                    <th>Tên Dòng Máy</th>
+                    <th>Giá</th>
+                    <th>Ngày Sản Xuất</th>
+                    <th>Hãng Sản Xuât</th>
+                    <th>#</th>
+                </tr>
+                @foreach (var item in Model.MayTinhDatMua)
+                {
+                    <tr>
+                        <td>@item.Mamay</td>
+                        <td>@item.Tendongmay</td>
+                        <td>@item.Price</td>
+                        <td>@item.NSX</td>
+                        <td>@item.HangSX</td>
+                        <td>
+                            <a href="~/Donhang/EditDonhang?IdDonHang=@Model.Id&maMay=@item.Mamay">Edit</a>
+                            <a href="~/Donhang/DeleteDonHang?IdDonHang=@Model.Id&maMay=@item.Mamay">Delete</a>
+
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<p>
+    @Html.ActionLink("Back to List", "ListOrder")
+</p>

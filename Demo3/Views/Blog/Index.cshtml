@@ -1,0 +1,111 @@
+﻿
+@{
+    ViewBag.Title = "Blog";
+    ViewBag.button = "Hihuha";
+
+    Layout = "~/Views/Shared/Layout.cshtml";
+    ViewBag.active = 4;
+    //Demo3.Models.Sinhvien sv1 = (Demo3.Models.Sinhvien)ViewBag.sv1;
+
+}
+@model  List<Demo3.Models.Sinhvien>
+<main style="">
+    <div >
+        <h2>Danh sach sv</h2>
+        <table class="table table-bordered" >
+            <thead>
+                <tr style="font-size:25p;">
+                    <th>ID</th>
+                    <th>Ma So</th>
+                    <th>Ho va Ten</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.MaSo</td>
+                        <td>@item.HoTen</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</main>
+
+<!-- blog -->
+@*<div class="blog">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="titlepage text_align_center ">
+                        <h2>Latest Blog</h2>
+                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row d_flex">
+                <div class=" col-md-4">
+                    <div class="latest">
+                        <figure><img src="~/frontend/images/blog1.jpg" alt="#" /></figure>
+                        <span>16 March</span>
+                        <div class="nostrud">
+                            <h3>Quis Nostrud </h3>
+                            <p>sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip</p>
+                            <a class="read_more" href="~/Blog/Index">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class=" col-md-4">
+                    <div class="latest">
+                        <figure><img src="~/frontend/images/blog2.jpg" alt="#" /></figure>
+                        <span class="yellow">17 March</span>
+                        <div class="nostrud">
+                            <h3>Veniam, Quis </h3>
+                            <p>sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip</p>
+                            <a class="read_more" href="blog.html">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class=" col-md-4">
+                    <div class="latest">
+                        <figure><img src="~/frontend/images/blog3.jpg" alt="#" /></figure>
+                        <span>18 March</span>
+                        <div class="nostrud">
+                            <h3>Tempor incididunt </h3>
+                            <p>sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip</p>
+                            <a class="read_more" href="blog.html">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@
+<!-- end blog -->
+@section blog{
+    <div class="hedingh3 text_align_left">
+        <h3>Blog</h3>
+        <p>
+            @*Sẽ thay đỏi khi view khác nhau*@
+            Đây là Blog
+            @*Sẽ thay đỏi khi view khác nhau*@
+
+        </p>
+    </div>
+}
+@section meta{
+    <!-- basic -->
+
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- mobile metas -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+
+}

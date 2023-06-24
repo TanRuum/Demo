@@ -1,0 +1,242 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{72AC893A-8DB3-4214-A096-D7C2185F67D9}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Demo3</RootNamespace>
+    <AssemblyName>Demo3</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44385</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Site.css" />
+    <Content Include="frontend\css\bootstrap-datepicker.min.css" />
+    <Content Include="frontend\css\bootstrap.css" />
+    <Content Include="frontend\css\bootstrap.min.css" />
+    <Content Include="frontend\css\font-awesome.min.css" />
+    <Content Include="frontend\css\icomoon.css" />
+    <Content Include="frontend\css\nice-select.css" />
+    <Content Include="frontend\css\niceCountryInput.css" />
+    <Content Include="frontend\css\owl.carousel.min.css" />
+    <Content Include="frontend\css\responsive.css" />
+    <Content Include="frontend\css\style.css" />
+    <Content Include="frontend\fonts\fontawesome-webfont.svg" />
+    <Content Include="frontend\images\about_img.jpg" />
+    <Content Include="frontend\images\banner.jpg" />
+    <Content Include="frontend\images\banner_img.jpg" />
+    <Content Include="frontend\images\blog1.jpg" />
+    <Content Include="frontend\images\blog2.jpg" />
+    <Content Include="frontend\images\blog3.jpg" />
+    <Content Include="frontend\images\img1.png" />
+    <Content Include="frontend\images\img2.png" />
+    <Content Include="frontend\images\loading.gif" />
+    <Content Include="frontend\images\play_icon.png" />
+    <Content Include="frontend\images\service1.jpg" />
+    <Content Include="frontend\images\service2.jpg" />
+    <Content Include="frontend\images\service3.jpg" />
+    <Content Include="frontend\images\test1.png" />
+    <Content Include="frontend\images\test2.png" />
+    <Content Include="frontend\images\test3.png" />
+    <Content Include="frontend\js\bootstrap-datepicker.min.js" />
+    <Content Include="frontend\js\bootstrap.bundle.min.js" />
+    <Content Include="frontend\js\bootstrap.js" />
+    <Content Include="frontend\js\bootstrap.min.js" />
+    <Content Include="frontend\js\custom.js" />
+    <Content Include="frontend\js\jquery-3.0.0.min.js" />
+    <Content Include="frontend\js\jquery.min.js" />
+    <Content Include="frontend\js\jquery.nice-select.min.js" />
+    <Content Include="frontend\js\niceCountryInput.js" />
+    <Content Include="frontend\js\owl.carousel.min.js" />
+    <Content Include="Global.asax" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
+    <Compile Include="Controllers\BlogController.cs" />
+    <Compile Include="Controllers\ContactUsController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ServiceController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\MathHelp.cs" />
+    <Compile Include="Models\DSmaytinh.cs" />
+    <Compile Include="Models\MayTinh.cs" />
+    <Compile Include="Models\Sinhvien.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="frontend\css\.DS_Store" />
+    <Content Include="frontend\fonts\fontawesome-webfont.eot" />
+    <Content Include="frontend\fonts\fontawesome-webfont.ttf" />
+    <Content Include="frontend\fonts\fontawesome-webfont.woff" />
+    <Content Include="frontend\fonts\fontawesome-webfont.woff2" />
+    <Content Include="frontend\fonts\FontAwesome.otf" />
+    <Content Include="frontend\fonts\IcoMoon-Free.ttf" />
+    <Content Include="frontend\fonts\Poppins-Black.ttf" />
+    <Content Include="frontend\fonts\Poppins-BlackItalic.ttf" />
+    <Content Include="frontend\fonts\Poppins-Bold.ttf" />
+    <Content Include="frontend\fonts\Poppins-BoldItalic.ttf" />
+    <Content Include="frontend\fonts\Poppins-ExtraBold.ttf" />
+    <Content Include="frontend\fonts\Poppins-ExtraBoldItalic.ttf" />
+    <Content Include="frontend\fonts\Poppins-ExtraLight.ttf" />
+    <Content Include="frontend\fonts\Poppins-ExtraLightItalic.ttf" />
+    <Content Include="frontend\fonts\Poppins-Italic.ttf" />
+    <Content Include="frontend\fonts\Poppins-Light.ttf" />
+    <Content Include="frontend\fonts\Poppins-LightItalic.ttf" />
+    <Content Include="frontend\fonts\Poppins-Medium.ttf" />
+    <Content Include="frontend\fonts\Poppins-MediumItalic.ttf" />
+    <Content Include="frontend\fonts\Poppins-Regular.ttf" />
+    <Content Include="frontend\fonts\Poppins-SemiBold.ttf" />
+    <Content Include="frontend\fonts\Poppins-SemiBoldItalic.ttf" />
+    <Content Include="frontend\fonts\Poppins-Thin.ttf" />
+    <Content Include="frontend\fonts\Poppins-ThinItalic.ttf" />
+    <Content Include="frontend\images\.DS_Store" />
+    <Content Include="frontend\js\.DS_Store" />
+    <None Include="packages.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\About\Index.cshtml" />
+    <Content Include="Views\Service\Index.cshtml" />
+    <Content Include="Views\Blog\Index.cshtml" />
+    <Content Include="Views\ContactUs\Index.cshtml" />
+    <Content Include="Views\Shared\Layout.cshtml" />
+    <Content Include="Views\ContactUs\Sapxep.cshtml" />
+    <Content Include="Views\ContactUs\SapxepTuBeDenLon.cshtml" />
+    <Content Include="Views\ContactUs\SapxepLonDenBe.cshtml" />
+    <Content Include="Views\ContactUs\TimhangApple.cshtml" />
+    <Content Include="Views\Service\Text.cshtml" />
+    <Content Include="Views\Service\FormThemMoi.cshtml" />
+    <Content Include="Views\Service\Themmoi2.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="frontend\icon\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>60833</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44385/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

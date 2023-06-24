@@ -1,0 +1,66 @@
+﻿@model WebDemo2.Models.KhachHang
+
+@{
+    ViewBag.Title = "Themmoi";
+    Layout = "~/Views/Shared/Layout.cshtml";
+    WebDemo2.Models.BanHangEntities db = new WebDemo2.Models.BanHangEntities();
+}
+
+<h2>Thêm mới</h2>
+
+@using (Html.BeginForm("Themmoi", "KhachHang", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <label class="control-label col-md-2">Tên Khách Hàng</label>
+            <div class="col-md-10">
+                <input type="text" name="TenKhachHang" value="" class="form-control" />
+                @Html.ValidationMessageFor(model => model.TenKhachHang, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Số Điện Thoại</label>
+            <div class="col-md-10">
+                <input type="text" name="SoDienThoai" value="" class="form-control" />
+                @Html.ValidationMessageFor(model => model.SoDienThoai, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Địa Chỉ</label>
+            <div class="col-md-10">
+                <input type="text" name="DiaChi" value="" class="form-control" />
+                @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Loại khách hàng</label>
+            <div class="col-md-10">
+                <select class="form-control" name="IdLoaiKhachHang">
+                    @{
+                        foreach (var loai in db.PhanLoaiKHs.ToList())
+                        {
+                            <option value="@loai.ID">@loai.TenPhanLoai</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

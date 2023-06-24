@@ -1,0 +1,71 @@
+﻿@model WebDemo1.Models.MayTinh
+
+@{
+    ViewBag.Title = "Thêm chi tiết cho đơn hàng";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("EditDonhang", "DonHang", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <input name="IdDonHang" value="@ViewBag.IdDonHang" readonly />
+    <input name="Mamay" value="@Model.Mamay" readonly />
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="container">
+            @*<div class="form-group">
+                <label class="control-label col-md-2">Mã Máy</label>
+                <div class="col-md-10">
+                    <input type="text" name="Mamay" class="form-control" />
+                    @Html.ValidationMessageFor(model => model.Mamay, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Tên Dòng Máy</label>
+                <div class="col-md-10">
+                    <input type="text" name="Tendongmay" class="form-control" />
+                    @Html.ValidationMessageFor(model => model.Tendongmay, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Giá</label>
+                <div class="col-md-10">
+                    <input type="text" name="Price" class="form-control" />
+                    @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Ngày sản xuất</label>
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.NSX, DateTime.Now.ToString("yyyy-MM-dd HH:mm"), new { @class = "form-control", type = "datetime-local" })
+
+                    @Html.ValidationMessageFor(model => model.NSX, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Hãng sản xuất</label>
+                <div class="col-md-10">
+                    <input type="text" name="HangSX" class="form-control" />
+                    @Html.ValidationMessageFor(model => model.HangSX, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "OrderList")
+</div>
