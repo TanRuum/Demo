@@ -103,6 +103,7 @@ namespace WebDemo2.Controllers
             //Tao la Tri
             /// ABCD
             // Day la tool
+            // alo 
             db.SaveChanges();
         }
 
