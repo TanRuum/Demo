@@ -99,6 +99,7 @@ namespace WebDemo2.Controllers
                     db.KhachHangs.Remove(khachhang);
                 }
             }
+            //Toi la Tan
             db.SaveChanges();
         }
 
