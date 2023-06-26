@@ -99,12 +99,7 @@ namespace WebDemo2.Controllers
                     db.KhachHangs.Remove(khachhang);
                 }
             }
-            //Toi la Tan
-            //Tao la Tri
-            /// ABCD
-            // Day la tool
-            // alo 
-            // alo 2
+            
             db.SaveChanges();
         }
 

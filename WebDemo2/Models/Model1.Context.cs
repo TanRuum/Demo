@@ -28,5 +28,7 @@ namespace WebDemo2.Models
         public virtual DbSet<BangMayTinh> BangMayTinhs { get; set; }
         public virtual DbSet<KhachHang> KhachHangs { get; set; }
         public virtual DbSet<PhanLoaiKH> PhanLoaiKHs { get; set; }
+        public virtual DbSet<BaiVietMoTa> BaiVietMoTas { get; set; }
+        public virtual DbSet<LoaiBaiViet> LoaiBaiViets { get; set; }
     }
 }

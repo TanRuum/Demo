@@ -1,0 +1,111 @@
+﻿@model WebDemo2.Models.BaiVietMoTa
+
+@{
+    ViewBag.Title = "Themmoi";
+    Layout = "~/Views/Shared/Layout.cshtml";
+    WebDemo2.Models.BanHangEntities db = new WebDemo2.Models.BanHangEntities();
+
+}
+
+@using (Html.BeginForm("Themmoi", "BaiVietMoTa", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Thêm mới bài viết</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <label class="control-label col-md-2">Tên Bài Viết</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TenBaiViet, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TenBaiViet, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Mô Tả</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MoTa, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MoTa, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Ngày Viết</label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.NgayViet, "{0:yyyy-MM-dd HH:mm}", new { @class = "form-control", type = "date" })
+                @Html.ValidationMessageFor(model => model.NgayViet, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Người Viết</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NguoiViet, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NguoiViet, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Nội Dung</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NoiDung, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NoiDung, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Hình Ảnh</label>
+            <div class="col-md-10">
+                <input type="file" name="fileImg" value="" />
+                @Html.ValidationMessageFor(model => model.HinhAnh, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Hiển Thị</label>
+
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.IsHienThi)
+                    @Html.ValidationMessageFor(model => model.IsHienThi, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Thứ Tự</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ThuTu, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ThuTu, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Loại Bài Viết</label>
+            <div class="col-md-10">
+                <select class="form-control" name="IdBaiViet">
+
+                    @{
+                        foreach (var TenLoai in db.LoaiBaiViets.ToList())
+                        {
+                            <option value="@TenLoai.ID">@TenLoai.TenLoai</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+}

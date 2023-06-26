@@ -5,6 +5,21 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="BanHangModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BaiVietMoTa">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenBaiViet" Type="nvarchar" MaxLength="200" />
+          <Property Name="MoTa" Type="nvarchar" MaxLength="200" />
+          <Property Name="NgayViet" Type="date" />
+          <Property Name="NguoiViet" Type="nvarchar" MaxLength="50" />
+          <Property Name="NoiDung" Type="nvarchar(max)" />
+          <Property Name="HinhAnh" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsHienThi" Type="bit" />
+          <Property Name="ThuTu" Type="int" />
+          <Property Name="idBaiViet" Type="int" />
+        </EntityType>
         <EntityType Name="BangMayTinh">
           <Key>
             <PropertyRef Name="ID" />
@@ -24,6 +39,13 @@
           <Property Name="DiaChi" Type="nvarchar" MaxLength="100" />
           <Property Name="IdLoaiKhachHang" Type="int" />
         </EntityType>
+        <EntityType Name="LoaiBaiViet">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenLoai" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="PhanLoaiKH">
           <Key>
             <PropertyRef Name="ID" />
@@ -31,6 +53,18 @@
           <Property Name="ID" Type="int" Nullable="false" />
           <Property Name="TenPhanLoai" Type="nvarchar" MaxLength="150" />
         </EntityType>
+        <Association Name="FK_BaiVietMoTa_LoaiBaiViet">
+          <End Role="LoaiBaiViet" Type="Self.LoaiBaiViet" Multiplicity="0..1" />
+          <End Role="BaiVietMoTa" Type="Self.BaiVietMoTa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiBaiViet">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BaiVietMoTa">
+              <PropertyRef Name="idBaiViet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_KhachHang_PhanLoaiKH">
           <End Role="PhanLoaiKH" Type="Self.PhanLoaiKH" Multiplicity="0..1" />
           <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="*" />
@@ -44,9 +78,15 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="BanHangModelStoreContainer">
+          <EntitySet Name="BaiVietMoTa" EntityType="Self.BaiVietMoTa" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BangMayTinh" EntityType="Self.BangMayTinh" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="KhachHang" EntityType="Self.KhachHang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoaiBaiViet" EntityType="Self.LoaiBaiViet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PhanLoaiKH" EntityType="Self.PhanLoaiKH" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_BaiVietMoTa_LoaiBaiViet" Association="Self.FK_BaiVietMoTa_LoaiBaiViet">
+            <End Role="LoaiBaiViet" EntitySet="LoaiBaiViet" />
+            <End Role="BaiVietMoTa" EntitySet="BaiVietMoTa" />
+          </AssociationSet>
           <AssociationSet Name="FK_KhachHang_PhanLoaiKH" Association="Self.FK_KhachHang_PhanLoaiKH">
             <End Role="PhanLoaiKH" EntitySet="PhanLoaiKH" />
             <End Role="KhachHang" EntitySet="KhachHang" />
@@ -84,6 +124,12 @@
             <End Role="PhanLoaiKH" EntitySet="PhanLoaiKHs" />
             <End Role="KhachHang" EntitySet="KhachHangs" />
           </AssociationSet>
+          <EntitySet Name="BaiVietMoTas" EntityType="BanHangModel.BaiVietMoTa" />
+          <EntitySet Name="LoaiBaiViets" EntityType="BanHangModel.LoaiBaiViet" />
+          <AssociationSet Name="FK_BaiVietMoTa_LoaiBaiViet" Association="BanHangModel.FK_BaiVietMoTa_LoaiBaiViet">
+            <End Role="LoaiBaiViet" EntitySet="LoaiBaiViets" />
+            <End Role="BaiVietMoTa" EntitySet="BaiVietMoTas" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="PhanLoaiKH">
           <Key>
@@ -102,6 +148,42 @@
             </Principal>
             <Dependent Role="KhachHang">
               <PropertyRef Name="IdLoaiKhachHang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="BaiVietMoTa">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenBaiViet" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="MoTa" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="NgayViet" Type="DateTime" Precision="0" />
+          <Property Name="NguoiViet" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HinhAnh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsHienThi" Type="Boolean" />
+          <Property Name="ThuTu" Type="Int32" />
+          <Property Name="idBaiViet" Type="Int32" />
+          <NavigationProperty Name="LoaiBaiViet" Relationship="BanHangModel.FK_BaiVietMoTa_LoaiBaiViet" FromRole="BaiVietMoTa" ToRole="LoaiBaiViet" />
+        </EntityType>
+        <EntityType Name="LoaiBaiViet">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenLoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BaiVietMoTas" Relationship="BanHangModel.FK_BaiVietMoTa_LoaiBaiViet" FromRole="LoaiBaiViet" ToRole="BaiVietMoTa" />
+        </EntityType>
+        <Association Name="FK_BaiVietMoTa_LoaiBaiViet">
+          <End Type="BanHangModel.LoaiBaiViet" Role="LoaiBaiViet" Multiplicity="0..1" />
+          <End Type="BanHangModel.BaiVietMoTa" Role="BaiVietMoTa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiBaiViet">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BaiVietMoTa">
+              <PropertyRef Name="idBaiViet" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -136,6 +218,30 @@
             <EntityTypeMapping TypeName="BanHangModel.PhanLoaiKH">
               <MappingFragment StoreEntitySet="PhanLoaiKH">
                 <ScalarProperty Name="TenPhanLoai" ColumnName="TenPhanLoai" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BaiVietMoTas">
+            <EntityTypeMapping TypeName="BanHangModel.BaiVietMoTa">
+              <MappingFragment StoreEntitySet="BaiVietMoTa">
+                <ScalarProperty Name="idBaiViet" ColumnName="idBaiViet" />
+                <ScalarProperty Name="ThuTu" ColumnName="ThuTu" />
+                <ScalarProperty Name="IsHienThi" ColumnName="IsHienThi" />
+                <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
+                <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+                <ScalarProperty Name="NguoiViet" ColumnName="NguoiViet" />
+                <ScalarProperty Name="NgayViet" ColumnName="NgayViet" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+                <ScalarProperty Name="TenBaiViet" ColumnName="TenBaiViet" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoaiBaiViets">
+            <EntityTypeMapping TypeName="BanHangModel.LoaiBaiViet">
+              <MappingFragment StoreEntitySet="LoaiBaiViet">
+                <ScalarProperty Name="TenLoai" ColumnName="TenLoai" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

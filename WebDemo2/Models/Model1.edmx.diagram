@@ -9,6 +9,9 @@
         <EntityTypeShape EntityType="BanHangModel.KhachHang" Width="1.5" PointX="5.8750001629814506" PointY="0.69999999739229679" IsExpanded="true" />
         <EntityTypeShape EntityType="BanHangModel.PhanLoaiKH" Width="1.5" PointX="5.9250001199543476" PointY="4.1217854861170036" />
         <AssociationConnector Association="BanHangModel.FK_KhachHang_PhanLoaiKH" />
+        <EntityTypeShape EntityType="BanHangModel.BaiVietMoTa" Width="1.5" PointX="3" PointY="3.9817047526041662" />
+        <EntityTypeShape EntityType="BanHangModel.LoaiBaiViet" Width="1.5" PointX="0.75" PointY="4.7509104817708305" />
+        <AssociationConnector Association="BanHangModel.FK_BaiVietMoTa_LoaiBaiViet" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
