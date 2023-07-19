@@ -18,7 +18,7 @@
         @Html.HiddenFor(model => model.ID)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.TenBaiViet, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">Tên Bài Viết</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.TenBaiViet, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.TenBaiViet, "", new { @class = "text-danger" })
@@ -26,7 +26,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.MoTa, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">Mô Tả</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.MoTa, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.MoTa, "", new { @class = "text-danger" })
@@ -34,7 +34,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.NgayViet, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">Ngày Viết</label>
             <div class="col-md-10">
                 @Html.TextBoxFor(model => model.NgayViet, "{0:yyyy-MM-dd HH:mm}", new { @class = "form-control", type = "date" })
                 @Html.ValidationMessageFor(model => model.NgayViet, "", new { @class = "text-danger" })
@@ -42,31 +42,17 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.NguoiViet, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">Người Viêt</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.NguoiViet, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.NguoiViet, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.NoiDung, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.NoiDung, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.NoiDung, "", new { @class = "text-danger" })
-            </div>
-        </div>
+
 
         <div class="form-group">
-            <label class="control-label col-md-2">Hình Ảnh</label>
-            <div class="col-md-10">
-                <input type="file" name="fileImg" value="" />
-                @Html.ValidationMessageFor(model => model.HinhAnh, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.IsHienThi, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">Hiển Thị</label>
             <div class="col-md-10">
                 <div class="checkbox">
                     @Html.EditorFor(model => model.IsHienThi)
@@ -76,12 +62,13 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ThuTu, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">Thứ Tự</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.ThuTu, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.ThuTu, "", new { @class = "text-danger" })
             </div>
         </div>
+
 
         <div class="form-group">
             <label class="control-label col-md-2">Loại Bài Viết</label>
@@ -99,6 +86,21 @@
         </div>
 
         <div class="form-group">
+            <label class="control-label col-md-2">Nội Dung</label>
+            <div class="col-md-10">
+                <textarea class="form-control" name="NoiDung" id="inputND"></textarea>
+                @Html.ValidationMessageFor(model => model.NoiDung, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Hình Ảnh</label>
+            <div class="col-md-10">
+                <input type="file" name="fileImg" value="" />
+                @Html.ValidationMessageFor(model => model.HinhAnh, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
@@ -109,3 +111,8 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+@section Script{
+    <script>
+        CKEDITOR.replace('inputND');
+    </script>
+}

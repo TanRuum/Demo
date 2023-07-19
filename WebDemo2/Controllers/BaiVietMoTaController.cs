@@ -10,10 +10,23 @@ namespace WebDemo2.Controllers
     public class BaiVietMoTaController : Controller
     {
         // GET: BaiVietMoTa
-        public ActionResult Index()
+        public ActionResult Index(string find, int? idBaiVietnew)
         {
             BanHangEntities db = new BanHangEntities();
-            List<BaiVietMoTa> dsBaiViet = db.BaiVietMoTas.ToList();
+            //List<BaiVietMoTa> dsBaiViet = db.BaiVietMoTas.Where
+            //    (m => m.TenBaiViet.ToLower().Contains(find) == true
+            //    || m.NguoiViet.ToLower().Contains(find)).ToList();
+
+            //List<BaiVietMoTa> dsBaiViet = (from m in db.BaiVietMoTas
+            //                               join n in db.LoaiBaiViets on m.idBaiViet equals n.ID
+            //                               where (string.IsNullOrEmpty(find) ||
+            //                               m.TenBaiViet.ToLower().Contains(find.ToLower()) == true
+            //                               || m.NguoiViet.ToLower().Contains(find.ToLower()) == true)
+            //                               & (n.ID == idBaiVietnew | idBaiVietnew == null)
+            //                               select m).ToList();
+            List<spDanhSachBaiViet_Result> dsBaiViet= db.spDanhSachBaiViet(find,idBaiVietnew).ToList();
+            ViewBag.find = find;
+            ViewBag.idBaiVietnew = idBaiVietnew;
             return View(dsBaiViet);
         }
         public ActionResult Themmoi()
@@ -22,10 +35,12 @@ namespace WebDemo2.Controllers
             return View();
         }
         [HttpPost]
+        [ValidateInput(false)]
+
         public ActionResult Themmoi(BaiVietMoTa model, HttpPostedFileBase fileImg)
         {
             BanHangEntities db = new BanHangEntities();
-            if (fileImg.ContentLength > 0)
+            if (fileImg != null && fileImg.FileName != null)
             {
                 // Luu files
                 string rootFolder = Server.MapPath("/Data/");
@@ -34,6 +49,7 @@ namespace WebDemo2.Controllers
                 // luu thuoc tinh URL IMG
                 model.HinhAnh = "/Data/" + fileImg.FileName;
             }
+            model.HinhAnh = "/Data/" + fileImg.FileName;
             db.BaiVietMoTas.Add(model);
             db.SaveChanges();
             return RedirectToAction("Index");
@@ -45,11 +61,12 @@ namespace WebDemo2.Controllers
             return View(model);
         }
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult Edit(BaiVietMoTa model, HttpPostedFileBase fileImg)
         {
             // Tìm ID trong db BaiVietMoTa => BaiVietMoi = ID minh chon trong BaiVietMoTa
             BanHangEntities db = new BanHangEntities();
-            if (fileImg.ContentLength > 0)
+            if (fileImg != null && fileImg.FileName != null)
             {
                 // Luu files
                 string rootFolder = Server.MapPath("/Data/");
@@ -69,7 +86,7 @@ namespace WebDemo2.Controllers
             BaiVietMoi.IsHienThi = model.IsHienThi;
             BaiVietMoi.ThuTu = model.ThuTu;
             BaiVietMoi.idBaiViet = model.idBaiViet;
-        
+
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -82,6 +99,18 @@ namespace WebDemo2.Controllers
             return RedirectToAction("Index");
 
         }
+        // Các bước nhúng CKEditor
+        // Tải bộ plugin và cho vào project
+        // Kéo file JS vào Layout
+        // Thay đổi input thành nội dung thành textarea , có đặt ID cho Input
+        // Viết lệnh Js cho input
+        // Lưu dữ liệu  - Tắt kiểm tra HTML cho Action lưu dữ liệu         [ValidateInput(false)]
 
+
+
+        //Sử Dụng CKFinder
+        // Tải bộ plugin và cho vào project
+        // Kéo file JS vào Layout
+        // Cấu hình CKFinder
     }
 }

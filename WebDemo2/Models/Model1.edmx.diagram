@@ -5,13 +5,19 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="739dc4db28324d8db911dcb54143b184" Name="Diagram1" ShowGrid="true" SnapToGrid="false" DisplayType="true">
-        <EntityTypeShape EntityType="BanHangModel.BangMayTinh" Width="3.0916667496785522" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BanHangModel.KhachHang" Width="1.5" PointX="5.8750001629814506" PointY="0.69999999739229679" IsExpanded="true" />
-        <EntityTypeShape EntityType="BanHangModel.PhanLoaiKH" Width="1.5" PointX="5.9250001199543476" PointY="4.1217854861170036" />
-        <AssociationConnector Association="BanHangModel.FK_KhachHang_PhanLoaiKH" />
-        <EntityTypeShape EntityType="BanHangModel.BaiVietMoTa" Width="1.5" PointX="3" PointY="3.9817047526041662" />
-        <EntityTypeShape EntityType="BanHangModel.LoaiBaiViet" Width="1.5" PointX="0.75" PointY="4.7509104817708305" />
+        <EntityTypeShape EntityType="BanHangModel.BaiVietMoTa" Width="1.5" PointX="3" PointY="4.9817047526041662" />
+        <EntityTypeShape EntityType="BanHangModel.BangMayTinh" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BanHangModel.KhachHang" Width="1.5" PointX="3" PointY="0.93362939453125016" />
+        <EntityTypeShape EntityType="BanHangModel.LoaiBaiViet" Width="1.5" PointX="0.75" PointY="5.7509104817708314" />
+        <EntityTypeShape EntityType="BanHangModel.PhanLoaiKH" Width="1.5" PointX="0.75" PointY="1.2220815429687519" />
+        <EntityTypeShape EntityType="BanHangModel.sysdiagram" Width="1.5" PointX="5.75" PointY="3.75" />
         <AssociationConnector Association="BanHangModel.FK_BaiVietMoTa_LoaiBaiViet" />
+        <AssociationConnector Association="BanHangModel.FK_KhachHang_PhanLoaiKH" />
+        <EntityTypeShape EntityType="BanHangModel.ChucNang" Width="1.5" PointX="5.375" PointY="7.0201650390624977" />
+        <EntityTypeShape EntityType="BanHangModel.NhanVien" Width="1.5" PointX="5.3750005000000005" PointY="10.443260742187498" />
+        <EntityTypeShape EntityType="BanHangModel.PhanQuyen" Width="1.5" PointX="7.6250005000000005" PointY="6.9240143229166655" />
+        <AssociationConnector Association="BanHangModel.FK_PhanQuyen_ChucNang" />
+        <AssociationConnector Association="BanHangModel.FK_PhanQuyen_NhanVien" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -1,8 +1,10 @@
-﻿@model IEnumerable<WebDemo2.Models.BaiVietMoTa>
-
+﻿@model IEnumerable<WebDemo2.Models.spDanhSachBaiViet_Result>
+@using WebDemo2.Models;
 @{
     ViewBag.Title = "Bài Viết Mô Tả";
     Layout = "~/Views/Shared/Layout.cshtml";
+    BanHangEntities db = new BanHangEntities();
+    List<LoaiBaiViet> listBaiViet = db.LoaiBaiViets.ToList();
 }
 
 
@@ -12,6 +14,23 @@
         <h2>Danh Sách Bài Viêt</h2> <hr />
         <a href="~/BaiVietMoTa/Themmoi" class="btn btn-success" style="float:right">Thêm mới</a>
         <div class="col-md-12">
+            <form method="get">
+                <div class="col-md-2">
+                    <input type="text" name="find" value="@ViewBag.find" placeholder="Nhập tên bài viết cần tìm" />
+                </div>
+                <div class="col-md-2">
+                    <select name="idBaiVietnew">
+                        <option>Tất cả</option>
+                        @foreach (var loaiBV in listBaiViet)
+                        {
+                            <option value="@loaiBV.ID" @Html.Raw(loaiBV.ID == ViewBag.idBaiVietnew ? "selected" : "")>@loaiBV.TenLoai </option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-success">Tìm</button>
+                </div>
+            </form>
             <table class="table">
                 <tr>
                     <th>
@@ -25,9 +44,6 @@
                     </th>
                     <th>
                         Người Viết
-                    </th>
-                    <th>
-                        Nội Dung
                     </th>
                     <th>
                         Hình Ảnh
@@ -60,22 +76,19 @@
                             @Html.DisplayFor(modelItem => item.NguoiViet)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.NoiDung)
-                        </td>
-                        <td>
                             <img src="@item.HinhAnh" style="height:100px;width:100px" />
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.IsHienThi)
+                            @*@Html.DisplayFor(modelItem => item.IsHienThi)*@
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.ThuTu)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.LoaiBaiViet.TenLoai)
+                            @item.TenLoai
                         </td>
                         <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.ID })
+                            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
                             @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "delete-link" })
                         </td>
                     </tr>

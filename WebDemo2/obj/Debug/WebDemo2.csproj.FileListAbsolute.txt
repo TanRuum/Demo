@@ -81,3 +81,5 @@ D:\C#\ASP.NET\Demo1\Demo1\WebDemo2\obj\Debug\WebDemo2.csproj.CoreCompileInputs.c
 D:\C#\ASP.NET\Demo1\Demo1\WebDemo2\obj\Debug\WebDemo2.csproj.CopyComplete
 D:\C#\ASP.NET\Demo1\Demo1\WebDemo2\obj\Debug\WebDemo2.dll
 D:\C#\ASP.NET\Demo1\Demo1\WebDemo2\obj\Debug\WebDemo2.pdb
+D:\C#\ASP.NET\Demo1\Demo1\WebDemo2\bin\CKFinder.dll
+D:\C#\ASP.NET\Demo1\Demo1\WebDemo2\bin\CKFinder.pdb

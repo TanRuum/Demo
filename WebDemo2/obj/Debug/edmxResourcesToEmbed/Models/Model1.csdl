@@ -1,5 +1,58 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="BanHangModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="BanHangEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="spDanhSachBaiViet" ReturnType="Collection(BanHangModel.spDanhSachBaiViet_Result)">
+      <Parameter Name="find" Mode="In" Type="String" />
+      <Parameter Name="idBaiVietnew" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="BaiVietMoTas" EntityType="BanHangModel.BaiVietMoTa" />
+    <EntitySet Name="BangMayTinhs" EntityType="BanHangModel.BangMayTinh" />
+    <EntitySet Name="KhachHangs" EntityType="BanHangModel.KhachHang" />
+    <EntitySet Name="LoaiBaiViets" EntityType="BanHangModel.LoaiBaiViet" />
+    <EntitySet Name="PhanLoaiKHs" EntityType="BanHangModel.PhanLoaiKH" />
+    <EntitySet Name="sysdiagrams" EntityType="BanHangModel.sysdiagram" />
+    <AssociationSet Name="FK_BaiVietMoTa_LoaiBaiViet" Association="BanHangModel.FK_BaiVietMoTa_LoaiBaiViet">
+      <End Role="LoaiBaiViet" EntitySet="LoaiBaiViets" />
+      <End Role="BaiVietMoTa" EntitySet="BaiVietMoTas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KhachHang_PhanLoaiKH" Association="BanHangModel.FK_KhachHang_PhanLoaiKH">
+      <End Role="PhanLoaiKH" EntitySet="PhanLoaiKHs" />
+      <End Role="KhachHang" EntitySet="KhachHangs" />
+    </AssociationSet>
+    <EntitySet Name="ChucNangs" EntityType="BanHangModel.ChucNang" />
+    <EntitySet Name="NhanViens" EntityType="BanHangModel.NhanVien" />
+    <EntitySet Name="PhanQuyens" EntityType="BanHangModel.PhanQuyen" />
+    <AssociationSet Name="FK_PhanQuyen_ChucNang" Association="BanHangModel.FK_PhanQuyen_ChucNang">
+      <End Role="ChucNang" EntitySet="ChucNangs" />
+      <End Role="PhanQuyen" EntitySet="PhanQuyens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PhanQuyen_NhanVien" Association="BanHangModel.FK_PhanQuyen_NhanVien">
+      <End Role="NhanVien" EntitySet="NhanViens" />
+      <End Role="PhanQuyen" EntitySet="PhanQuyens" />
+    </AssociationSet>
+  </EntityContainer>
+  <ComplexType Name="spDanhSachBaiViet_Result">
+    <Property Type="String" Name="TenBaiViet" Nullable="true" MaxLength="200" />
+    <Property Type="DateTime" Name="NgayViet" Nullable="true" />
+    <Property Type="String" Name="NguoiViet" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TenLoai" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <EntityType Name="BaiVietMoTa">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenBaiViet" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="MoTa" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="NgayViet" Type="DateTime" Precision="0" />
+    <Property Name="NguoiViet" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="HinhAnh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IsHienThi" Type="Boolean" />
+    <Property Name="ThuTu" Type="Int32" />
+    <Property Name="idBaiViet" Type="Int32" />
+    <NavigationProperty Name="LoaiBaiViet" Relationship="BanHangModel.FK_BaiVietMoTa_LoaiBaiViet" FromRole="BaiVietMoTa" ToRole="LoaiBaiViet" />
+  </EntityType>
   <EntityType Name="BangMayTinh">
     <Key>
       <PropertyRef Name="ID" />
@@ -20,21 +73,14 @@
     <Property Name="IdLoaiKhachHang" Type="Int32" />
     <NavigationProperty Name="PhanLoaiKH" Relationship="BanHangModel.FK_KhachHang_PhanLoaiKH" FromRole="KhachHang" ToRole="PhanLoaiKH" />
   </EntityType>
-  <EntityContainer Name="BanHangEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="BangMayTinhs" EntityType="Self.BangMayTinh" />
-    <EntitySet Name="KhachHangs" EntityType="Self.KhachHang" />
-    <EntitySet Name="PhanLoaiKHs" EntityType="BanHangModel.PhanLoaiKH" />
-    <AssociationSet Name="FK_KhachHang_PhanLoaiKH" Association="BanHangModel.FK_KhachHang_PhanLoaiKH">
-      <End Role="PhanLoaiKH" EntitySet="PhanLoaiKHs" />
-      <End Role="KhachHang" EntitySet="KhachHangs" />
-    </AssociationSet>
-    <EntitySet Name="BaiVietMoTas" EntityType="BanHangModel.BaiVietMoTa" />
-    <EntitySet Name="LoaiBaiViets" EntityType="BanHangModel.LoaiBaiViet" />
-    <AssociationSet Name="FK_BaiVietMoTa_LoaiBaiViet" Association="BanHangModel.FK_BaiVietMoTa_LoaiBaiViet">
-      <End Role="LoaiBaiViet" EntitySet="LoaiBaiViets" />
-      <End Role="BaiVietMoTa" EntitySet="BaiVietMoTas" />
-    </AssociationSet>
-  </EntityContainer>
+  <EntityType Name="LoaiBaiViet">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenLoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="BaiVietMoTas" Relationship="BanHangModel.FK_BaiVietMoTa_LoaiBaiViet" FromRole="LoaiBaiViet" ToRole="BaiVietMoTa" />
+  </EntityType>
   <EntityType Name="PhanLoaiKH">
     <Key>
       <PropertyRef Name="ID" />
@@ -43,6 +89,28 @@
     <Property Name="TenPhanLoai" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="KhachHangs" Relationship="BanHangModel.FK_KhachHang_PhanLoaiKH" FromRole="PhanLoaiKH" ToRole="KhachHang" />
   </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_BaiVietMoTa_LoaiBaiViet">
+    <End Type="BanHangModel.LoaiBaiViet" Role="LoaiBaiViet" Multiplicity="0..1" />
+    <End Type="BanHangModel.BaiVietMoTa" Role="BaiVietMoTa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoaiBaiViet">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="BaiVietMoTa">
+        <PropertyRef Name="idBaiViet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_KhachHang_PhanLoaiKH">
     <End Type="BanHangModel.PhanLoaiKH" Role="PhanLoaiKH" Multiplicity="0..1" />
     <End Type="BanHangModel.KhachHang" Role="KhachHang" Multiplicity="*" />
@@ -55,39 +123,66 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityType Name="BaiVietMoTa">
+  <EntityType Name="ChucNang">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="TenBaiViet" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Name="MoTa" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Name="NgayViet" Type="DateTime" Precision="0" />
-    <Property Name="NguoiViet" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="HinhAnh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="IsHienThi" Type="Boolean" />
-    <Property Name="ThuTu" Type="Int32" />
-    <Property Name="idBaiViet" Type="Int32" />
-    <NavigationProperty Name="LoaiBaiViet" Relationship="BanHangModel.FK_BaiVietMoTa_LoaiBaiViet" FromRole="BaiVietMoTa" ToRole="LoaiBaiViet" />
+    <Property Name="TenChucNang" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MaChucNang" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="PhanQuyens" Relationship="BanHangModel.FK_PhanQuyen_ChucNang" FromRole="ChucNang" ToRole="PhanQuyen" />
   </EntityType>
-  <EntityType Name="LoaiBaiViet">
+  <EntityType Name="NhanVien">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="TenLoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="BaiVietMoTas" Relationship="BanHangModel.FK_BaiVietMoTa_LoaiBaiViet" FromRole="LoaiBaiViet" ToRole="BaiVietMoTa" />
+    <Property Name="Username" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="TenNhanVien" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SDT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NgaySinh" Type="DateTime" Precision="0" />
+    <Property Name="DiaChi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="idLoaiNhanVien" Type="Int32" />
+    <Property Name="ChucVu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="PhanQuyens" Relationship="BanHangModel.FK_PhanQuyen_NhanVien" FromRole="NhanVien" ToRole="PhanQuyen" />
   </EntityType>
-  <Association Name="FK_BaiVietMoTa_LoaiBaiViet">
-    <End Type="BanHangModel.LoaiBaiViet" Role="LoaiBaiViet" Multiplicity="0..1" />
-    <End Type="BanHangModel.BaiVietMoTa" Role="BaiVietMoTa" Multiplicity="*" />
+  <EntityType Name="PhanQuyen">
+    <Key>
+      <PropertyRef Name="IDNhanVien" />
+      <PropertyRef Name="IDChucNang" />
+    </Key>
+    <Property Name="IDNhanVien" Type="Int32" Nullable="false" />
+    <Property Name="IDChucNang" Type="Int32" Nullable="false" />
+    <Property Name="GhiChu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ChucNang" Relationship="BanHangModel.FK_PhanQuyen_ChucNang" FromRole="PhanQuyen" ToRole="ChucNang" />
+    <NavigationProperty Name="NhanVien" Relationship="BanHangModel.FK_PhanQuyen_NhanVien" FromRole="PhanQuyen" ToRole="NhanVien" />
+  </EntityType>
+  <Association Name="FK_PhanQuyen_ChucNang">
+    <End Type="BanHangModel.ChucNang" Role="ChucNang" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="BanHangModel.PhanQuyen" Role="PhanQuyen" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="LoaiBaiViet">
+      <Principal Role="ChucNang">
         <PropertyRef Name="ID" />
       </Principal>
-      <Dependent Role="BaiVietMoTa">
-        <PropertyRef Name="idBaiViet" />
+      <Dependent Role="PhanQuyen">
+        <PropertyRef Name="IDChucNang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PhanQuyen_NhanVien">
+    <End Type="BanHangModel.NhanVien" Role="NhanVien" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="BanHangModel.PhanQuyen" Role="PhanQuyen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhanVien">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PhanQuyen">
+        <PropertyRef Name="IDNhanVien" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

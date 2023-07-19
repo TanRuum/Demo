@@ -12,6 +12,8 @@ namespace WebDemo2.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class BanHangEntities : DbContext
     {
@@ -25,10 +27,27 @@ namespace WebDemo2.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<BaiVietMoTa> BaiVietMoTas { get; set; }
         public virtual DbSet<BangMayTinh> BangMayTinhs { get; set; }
         public virtual DbSet<KhachHang> KhachHangs { get; set; }
-        public virtual DbSet<PhanLoaiKH> PhanLoaiKHs { get; set; }
-        public virtual DbSet<BaiVietMoTa> BaiVietMoTas { get; set; }
         public virtual DbSet<LoaiBaiViet> LoaiBaiViets { get; set; }
+        public virtual DbSet<PhanLoaiKH> PhanLoaiKHs { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<ChucNang> ChucNangs { get; set; }
+        public virtual DbSet<NhanVien> NhanViens { get; set; }
+        public virtual DbSet<PhanQuyen> PhanQuyens { get; set; }
+    
+        public virtual ObjectResult<spDanhSachBaiViet_Result> spDanhSachBaiViet(string find, Nullable<int> idBaiVietnew)
+        {
+            var findParameter = find != null ?
+                new ObjectParameter("find", find) :
+                new ObjectParameter("find", typeof(string));
+    
+            var idBaiVietnewParameter = idBaiVietnew.HasValue ?
+                new ObjectParameter("idBaiVietnew", idBaiVietnew) :
+                new ObjectParameter("idBaiVietnew", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spDanhSachBaiViet_Result>("spDanhSachBaiViet", findParameter, idBaiVietnewParameter);
+        }
     }
 }
